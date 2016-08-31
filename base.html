@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,19 +9,8 @@
     {% block pagetitle %}
     <title>{{s.siteName}} :: {{s.siteSubheading}}</title>
     {% endblock %}
-
     <link rel="shortcut icon" href="/static/favicon.ico" />
-    <!-- Bootstrap Core CSS -->
-    <link href="/static/base-css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/static/base-css/blog-home.css" rel="stylesheet">
-
-    <link href="/static/base-css/style.css" rel="stylesheet">
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    {{ moment.include_moment() }}
-    <script src="/static/base-js/moment-with-locales.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,6 +19,14 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style type="text/css">
+      body {
+        padding-top: 70px; 
+      }
+      footer {
+        margin: 50px 0;
+      }
+    </style>
 </head>
 
 <body>
@@ -58,12 +53,12 @@
                     <li>
                         <a href="/contact/">Contact</a>
                     </li>
-		{% if g.user.is_authenticated() %}
+		{% if g.user.is_authenticated %}
                     <li>
 			<a href="/admin/">Admin</a>
 		    </li>
 		    <li>
-			<a href="/admin/logout/">Logout</a>
+			<a href="/logout/">Logout</a>
 		    </li>
 		{% else %}
                     <li>
@@ -78,6 +73,7 @@
     </nav>
 
     <!-- Page Content -->
+    {% block container %}
     <div class="container">
 
         <div class="row">
@@ -99,13 +95,12 @@
         </footer>
 
     </div>
+    {% endblock %}
     <!-- /.container -->
 
-    <!-- jQuery -->
-    <!-- <script src="/static/base-js/jquery.js"></script> -->
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/static/base-js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    {{ moment.include_moment() }}
 
 {{s.googleAnal|safe}}
 </body>
